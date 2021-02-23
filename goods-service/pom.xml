@@ -17,4 +17,11 @@
         <module>goods-server</module>
         <module>goods-interface</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,5 +1,6 @@
 package org.example.goods.controller;
 
+import org.example.common.rsp.HttpResult;
 import org.example.goods.proto.*;
 import org.example.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +24,19 @@ public class GoodsServiceController {
     @Autowired
     private GoodsService goodsService;
     @PostMapping("/findGoodsInfo")
-    public FindGoodsInfoResp findGoodsInfo(@RequestBody FindGoodsInfoReq req) {
-        return goodsService.searchGoodsInfo(req);
+    public HttpResult<FindGoodsInfoResp> findGoodsInfo(@RequestBody FindGoodsInfoReq req) {
+        return new HttpResult(goodsService.searchGoodsInfo(req));
     }
     @PostMapping("/frozenGoodsStore")
-    public FrozenGoodsStoreResp frozenGoodsStore(@RequestBody FrozenGoodsStoreReq req) {
-        return goodsService.frozenGoodsStoreService(req);
+    public HttpResult<FrozenGoodsStoreResp> frozenGoodsStore(@RequestBody FrozenGoodsStoreReq req) {
+        return new HttpResult(goodsService.frozenGoodsStoreService(req));
     }
     @PostMapping("/writeOffGoodsStore")
-    public WriteOffGoodsStoreResp writeOffGoodsStore(@RequestBody WriteOffGoodsStoreReq req) {
-        return goodsService.writeOffGoodsStoreService(req);
+    public HttpResult<WriteOffGoodsStoreResp> writeOffGoodsStore(@RequestBody WriteOffGoodsStoreReq req) {
+        return new HttpResult(goodsService.writeOffGoodsStoreService(req));
     }
     @PostMapping("/rollBackGoodsStore")
-    public RollBackGoodsStoreResp rollBackGoodsStore(@RequestBody RollBackGoodsStoreReq req) {
-        return goodsService.rollBackGoodsStoreService(req);
+    public HttpResult<RollBackGoodsStoreResp> rollBackGoodsStore(@RequestBody RollBackGoodsStoreReq req) {
+        return new HttpResult(goodsService.rollBackGoodsStoreService(req));
     }
 }
