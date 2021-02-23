@@ -15,6 +15,7 @@
     <module>user-service</module>
     <module>order-service</module>
     <module>controller-web</module>
+      <module>common</module>
   </modules>
 
   <name>my-tcc</name>
@@ -52,6 +53,15 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+
+
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
