@@ -8,28 +8,83 @@
   <artifactId>my-tcc</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <description>我的TCC</description>
   <modules>
     <module>spring-eureka</module>
     <module>goods-service</module>
     <module>user-service</module>
     <module>order-service</module>
+    <module>controller-web</module>
   </modules>
 
   <name>my-tcc</name>
 
   <properties>
+    <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <lombok.version>1.18.10</lombok.version>
+    <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.1.6.RELEASE</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.1.6.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId> com.google.code.gson</groupId>
+      <artifactId> gson</artifactId>
+      <version>2.8.2</version>
+    </dependency>
   </dependencies>
+
+  <!-- Spring Cloud 标准依赖 -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Greenwich.SR2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.eureka.server;
 
 import static org.junit.Assert.assertTrue;
 

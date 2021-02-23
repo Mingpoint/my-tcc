@@ -1,0 +1,14 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: controller-web
+  cloud:
+    config:
+      enabled: false
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
