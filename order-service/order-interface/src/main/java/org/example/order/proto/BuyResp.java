@@ -13,4 +13,5 @@ import org.aspectj.weaver.ast.Or;
  */
 @Data
 public class BuyResp extends OrderBase {
+    private boolean status;
 }

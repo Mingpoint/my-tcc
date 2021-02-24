@@ -19,6 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(value = "order-service", contextId = "OrderProxy")
 @RequestMapping("/order")
 public interface OrderProxy {
-    @PostMapping("/buy")
-    HttpResult<BuyResp> buy (@RequestBody BuyReq req);
+    @PostMapping("/createOrder")
+    HttpResult<BuyResp> createOrder (@RequestBody BuyReq req);
 }

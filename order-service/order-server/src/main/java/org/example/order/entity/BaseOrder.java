@@ -25,5 +25,6 @@ public class BaseOrder implements Serializable {
     private Integer orderStatus;
     
     private Integer isDeleted;
+    private Integer buyQuantity;
 
 }

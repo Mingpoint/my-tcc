@@ -25,14 +25,14 @@ public class GoodsStockDao {
     }
     public boolean updateFrozenGoodsStore (String productId,Integer stockQuantity,Integer frozenQuantity) {
         int i = jdbcTemplate.update("update product_stock set stock_quantity = ?,frozen_quantity = ? where product_id = ?",stockQuantity,frozenQuantity,productId);
-        return i == 0;
+        return i != 0;
     }
     public boolean updateWriteOffGoodsStore (String productId,Integer soldQuantity,Integer frozenQuantity) {
         int i = jdbcTemplate.update("update product_stock set sold_quantity = ?,frozen_quantity = ? where product_id = ?",soldQuantity,frozenQuantity,productId);
-        return i == 0;
+        return i != 0;
     }
     public boolean updateRollBackGoodsStore (String productId,Integer stockQuantity,Integer soldQuantity,Integer frozenQuantity) {
         int i = jdbcTemplate.update("update product_stock set stock_quantity = ?,sold_quantity = ?,frozen_quantity = ? where product_id = ?",stockQuantity,soldQuantity,frozenQuantity,productId);
-        return i == 0;
+        return i != 0;
     }
 }
