@@ -1,11 +1,10 @@
 package org.example.order.service;
 
-import org.example.common.exceptions.TccException;
 import org.example.order.dao.OrderDao;
 import org.example.order.dao.OrderItemDao;
 import org.example.order.entity.OrderItem;
-import org.example.order.proto.BuyReq;
-import org.example.order.proto.BuyResp;
+import org.example.order.proto.CreateOrderReq;
+import org.example.order.proto.CreateOrderResp;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +25,12 @@ public class OrderService {
     @Autowired
     private OrderItemDao orderItemDao;
     @Transactional
-    public BuyResp createOrder (BuyReq req) {
+    public CreateOrderResp createOrder (CreateOrderReq req) {
         boolean a = orderDao.insertOrder(req.getBuyQuantity(), req.getUid(), req.getPayAmount(), req.getOrderNo());
         OrderItem orderItem = new OrderItem();
         BeanUtils.copyProperties(req.getItem(),orderItem);
         boolean b = orderItemDao.insertOrderItem(orderItem);
-        BuyResp buyResp = new BuyResp();
+        CreateOrderResp buyResp = new CreateOrderResp();
         buyResp.setStatus(a && b);
         return buyResp;
     }

@@ -11,5 +11,7 @@ import lombok.Data;
  * @package： org.user.proto
  */
 @Data
-public class RollBackAmountReq {
+public class RollBackAmountReq extends BaseAmount {
+    private Long rollBackAmount;
+    private String trackNo;
 }

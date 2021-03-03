@@ -12,4 +12,6 @@ import lombok.Data;
  */
 @Data
 public class RollBackAmountResp {
+    private boolean status;
+    private String trackNo;
 }

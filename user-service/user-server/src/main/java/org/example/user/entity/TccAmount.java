@@ -26,7 +26,7 @@ public class TccAmount implements Serializable {
     /**
     * 有户id
     */
-    private Integer uid;
+    private String uid;
 
 
 

@@ -11,5 +11,6 @@ import lombok.Data;
  * @package： org.user.proto
  */
 @Data
-public class WriteOffAmountReq {
+public class WriteOffAmountReq extends BaseAmount {
+    private String trackNo;
 }

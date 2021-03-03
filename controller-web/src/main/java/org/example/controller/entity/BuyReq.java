@@ -14,6 +14,6 @@ import lombok.Data;
 public class BuyReq {
     private String uid;
     private String productId;
-    private String quantity;
+    private Integer quantity;
 
 }

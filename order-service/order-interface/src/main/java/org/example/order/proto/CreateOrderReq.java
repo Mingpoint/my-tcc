@@ -11,7 +11,7 @@ import lombok.Data;
  * @package： org.example.order.proto
  */
 @Data
-public class BuyReq extends OrderBase {
+public class CreateOrderReq extends OrderBase {
     private String productId;
     private Integer buyQuantity;
 

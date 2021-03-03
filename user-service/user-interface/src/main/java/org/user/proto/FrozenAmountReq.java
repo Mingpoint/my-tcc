@@ -11,5 +11,6 @@ import lombok.Data;
  * @package： org.user.proto
  */
 @Data
-public class FrozenAmountReq {
+public class FrozenAmountReq extends BaseAmount {
+    private Long frozenAmount;
 }

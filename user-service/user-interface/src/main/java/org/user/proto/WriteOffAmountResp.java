@@ -12,4 +12,6 @@ import lombok.Data;
  */
 @Data
 public class WriteOffAmountResp {
+    private boolean status;
+    private String trackNo;
 }

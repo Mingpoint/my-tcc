@@ -12,6 +12,6 @@ import org.aspectj.weaver.ast.Or;
  * @package： org.example.order.proto
  */
 @Data
-public class BuyResp extends OrderBase {
+public class CreateOrderResp extends OrderBase {
     private boolean status;
 }

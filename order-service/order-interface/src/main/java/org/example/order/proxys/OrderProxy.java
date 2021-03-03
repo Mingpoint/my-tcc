@@ -1,8 +1,8 @@
 package org.example.order.proxys;
 
 import org.example.common.rsp.HttpResult;
-import org.example.order.proto.BuyReq;
-import org.example.order.proto.BuyResp;
+import org.example.order.proto.CreateOrderReq;
+import org.example.order.proto.CreateOrderResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,5 +20,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/order")
 public interface OrderProxy {
     @PostMapping("/createOrder")
-    HttpResult<BuyResp> createOrder (@RequestBody BuyReq req);
+    HttpResult<CreateOrderResp> createOrder (@RequestBody CreateOrderReq req);
 }

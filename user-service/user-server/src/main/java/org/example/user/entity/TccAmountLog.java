@@ -21,7 +21,8 @@ public class TccAmountLog implements Serializable {
     
     private Date exeTime;
     
-    private Integer uid;
+    private String uid;
     
     private Integer type;
+    private String  trackNo;
 }

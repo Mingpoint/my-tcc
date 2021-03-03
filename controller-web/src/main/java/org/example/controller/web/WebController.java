@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/web")
 public class WebController {
+    @RequestMapping("/buy")
     public String buy (@RequestBody BuyReq buyReq) {
         //1.查询商品信息
         //2.锁定库存

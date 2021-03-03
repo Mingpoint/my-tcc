@@ -1,8 +1,8 @@
 package org.example.order.controller;
 
 import org.example.common.rsp.HttpResult;
-import org.example.order.proto.BuyReq;
-import org.example.order.proto.BuyResp;
+import org.example.order.proto.CreateOrderReq;
+import org.example.order.proto.CreateOrderResp;
 import org.example.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @PostMapping("/createOrder")
-    HttpResult<BuyResp> createOrder(@RequestBody BuyReq req) {
+    HttpResult<CreateOrderResp> createOrder(@RequestBody CreateOrderReq req) {
         return new HttpResult<>(orderService.createOrder(req));
     }
 }
