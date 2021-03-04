@@ -1,6 +1,7 @@
 package org.example.goods.service;
 
 import org.example.common.exceptions.TccException;
+import org.example.core.annotation.TccAnnotation;
 import org.example.goods.dao.GoodsDao;
 import org.example.goods.dao.GoodsStockDao;
 import org.example.goods.entity.GoodsInfo;
@@ -64,5 +65,40 @@ public class GoodsService {
         boolean b = goodsStockDao.updateRollBackGoodsStore(req.getProductId(), stockQuantity + req.getQuantity(),soldQuantity - req.getQuantity(), frozenQuantity - req.getQuantity());
         rollBackGoodsStoreResp.setStatus(b);
         return rollBackGoodsStoreResp;
+    }
+
+    @TccAnnotation(confirmMethod = "buyGoodsConfirmService",rollBackMethod="buyGoodsRollBackService")
+    public BuyGoodsResp buyGoodsService (BuyGoodsReq req) {
+        BuyGoodsResp buyGoodsResp = new BuyGoodsResp();
+        FrozenGoodsStoreReq request = new FrozenGoodsStoreReq ();
+        request.setQuantity(req.getQuantity());
+        request.setProductId(req.getProductId());
+        FrozenGoodsStoreResp frozenGoodsStoreResp = this.frozenGoodsStoreService(request);
+        if (!frozenGoodsStoreResp.isStatus()) {
+            throw new TccException("lockStoreFail","库存锁定失败");
+        }
+        return buyGoodsResp;
+    }
+    public BuyGoodsResp buyGoodsConfirmService (BuyGoodsReq req) {
+        BuyGoodsResp buyGoodsResp = new BuyGoodsResp();
+        WriteOffGoodsStoreReq request = new WriteOffGoodsStoreReq ();
+        request.setQuantity(req.getQuantity());
+        request.setProductId(req.getProductId());
+        WriteOffGoodsStoreResp writeOffGoodsStoreResp = this.writeOffGoodsStoreService(request);
+        if (!writeOffGoodsStoreResp.isStatus()) {
+            throw new TccException("writeOffGoodsStoreFail","库存核销失败");
+        }
+        return buyGoodsResp;
+    }
+    public BuyGoodsResp buyGoodsRollBackService (BuyGoodsReq req) {
+        BuyGoodsResp buyGoodsResp = new BuyGoodsResp();
+        RollBackGoodsStoreReq request = new RollBackGoodsStoreReq ();
+        request.setQuantity(req.getQuantity());
+        request.setProductId(req.getProductId());
+        RollBackGoodsStoreResp rollBackGoodsStoreResp = this.rollBackGoodsStoreService(request);
+        if (!rollBackGoodsStoreResp.isStatus()) {
+            throw new TccException("rollBackGoodsStoreFail","库存回滚失败");
+        }
+        return buyGoodsResp;
     }
 }

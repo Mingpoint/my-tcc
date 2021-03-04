@@ -24,4 +24,8 @@ public interface GoodsServiceProxy {
     HttpResult<WriteOffGoodsStoreResp> writeOffGoodsStore(@RequestBody WriteOffGoodsStoreReq req);
     @PostMapping("/goods/rollBackGoodsStore")
     HttpResult<RollBackGoodsStoreResp> rollBackGoodsStore(@RequestBody RollBackGoodsStoreReq req);
+
+    @PostMapping("/goods/buyGoods")
+    HttpResult<RollBackGoodsStoreResp> buyGoods(@RequestBody BuyGoodsReq req);
+
 }

@@ -39,4 +39,9 @@ public class GoodsServiceController {
     public HttpResult<RollBackGoodsStoreResp> rollBackGoodsStore(@RequestBody RollBackGoodsStoreReq req) {
         return new HttpResult(goodsService.rollBackGoodsStoreService(req));
     }
+    @PostMapping("/goods/buyGoods")
+    public HttpResult<BuyGoodsResp> buyGoods(@RequestBody BuyGoodsReq req) {
+        return new HttpResult<>(goodsService.buyGoodsService(req));
+
+    }
 }

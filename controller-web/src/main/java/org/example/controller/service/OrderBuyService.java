@@ -3,6 +3,7 @@ package org.example.controller.service;
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.rsp.HttpResult;
 import org.example.controller.entity.BuyReq;
+import org.example.core.annotation.TccAnnotation;
 import org.example.goods.proto.*;
 import org.example.goods.proxys.GoodsServiceProxy;
 import org.example.order.proto.CreateOrderReq;
@@ -164,5 +165,16 @@ public class OrderBuyService {
 //            return null;
 //        }
         return null;
+    }
+
+    @TccAnnotation(confirmMethod = "confirmMethod",rollBackMethod = "rollBackMethod")
+    public String buyByMyTcc (BuyReq req) {
+        return null;
+    }
+    public void rollBackMethod(BuyReq req) {
+        log.error("buyByMyTcc rollBackMethod");
+    }
+    public void confirmMethod(BuyReq req) {
+        log.error("buyByMyTcc confirmMethod");
     }
 }
